@@ -1,0 +1,446 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SD Lab -- About the course
+% Giovanni Ciatto
+% Alma Mater Studiorum - Università di Bologna
+% mailto:giovanni.ciatto@unibo.it
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\documentclass[handout]{beamer}\mode<handout>{\usetheme{default}}
+%
+\documentclass[presentation]{beamer}\mode<presentation>{\usetheme{AMSBolognaFC}}
+%\documentclass[handout]{beamer}\mode<handout>{\usetheme{AMSBolognaFC}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{sd-lab-common}
+\usepackage{sd-lab-guidelines}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title[\currentLab{} -- Guidelines]{
+	Guidelines for project and exam
+}
+%
+\subtitle{\courseName{} (\courseAcronym) / Module \moduleN{}}
+%
+\author[\sspeaker{\gcShort} \& \mmShort]{
+	\speaker{\mmFull} \and \gcFull
+	\\
+	\mmEmail \and \gcEmail
+}
+%
+\institute[\disiShort, \uniboShort]{\disi{} (\disiShort)\\\unibo}
+%
+\date[A.Y. \academicYear{}]{Academic Year \academicYear{}}
+%
+\begin{document}
+
+\maketitle
+
+\begin{frame}[c]\frametitle{Outline}
+    % \begin{multicols}{2}
+        \tableofcontents[sectionstyle=show/show, subsectionstyle=show/show, subsubsectionstyle=show/show]
+    % \end{multicols}
+\end{frame}
+
+\section{Follow the rules}
+\subsection{Mandatory Labs}
+
+\begin{frame}[c,allowframebreaks]{About the labs}
+
+    \begin{block}{All you need to know}
+        \begin{itemize}
+            %
+            \item there will be only 3-4 mandatory labs
+            %
+            \item you can do them whenever you want
+            \\
+            $\rightarrow$ \alert{before taking appointment for the lab discussion}
+            %
+            \item we suggest to do them during the end of the lab class or in a few days
+            %
+        \end{itemize}
+    \end{block}
+
+    \framebreak
+
+    \begin{block}{How we evaluate}
+        \begin{itemize}
+            %
+            \item no need to worry
+            %
+            \item you can look at the result of the CI
+            %
+            \begin{itemize}
+                %
+                \item {\color{green} green light} $\rightarrow$ you could have done all right
+                %
+                \item {\color{red} red light} $\rightarrow$ you have done something wrong
+                %
+            \end{itemize}
+            %
+            \item again, don't worry if you have a red light
+            %
+            \begin{itemize}
+                %
+                \item look at the logs and try to figure out what went wrong
+                %
+                \item look at the tests and at the CI file
+                %
+                \item we do not care too much if you can explain your solution
+                %
+            \end{itemize}
+            %
+        \end{itemize}
+        %
+    \end{block}
+    %
+    We can have a look together at the \bluehref{\gitlabGroup/lab-1}{first lab}.
+\end{frame}
+
+\subsection{Project workflow}
+
+\begin{frame}[c]{Project rules}
+    %
+    \bluehref{\projectRules}{Here} you can find the exhaustive rules for this year.
+    
+    \begin{block}{In a nutshell}
+    %
+    \begin{enumerate}
+        %
+        \item Reserving / proposing a project
+        %
+        \begin{enumerate}
+            %
+            \item post your request on the \bluehref{\projectForum}{project forum}
+            %
+            \item\label{item:wait} wait for our reply (usually it is a go)
+            %
+            \begin{enumerate}
+                %
+                \item go $\rightarrow$ write the initial report
+                %
+                \item no go $\rightarrow$ fine-tune the proposal (back to 1.2)
+                %
+            \end{enumerate}
+            %
+        \end{enumerate}
+        %
+        \item Beginning the project
+        %
+        \begin{itemize}
+            %
+            \item we will give you a repository
+            \\
+            \alert{we will look only at that repo!}
+            %
+            \item we suggest to include \alert{gitignore}, \alert{gitattributes} and a readme
+            %
+        \end{itemize}
+        %
+        \item Submit the project
+        %
+        \begin{itemize}
+            %
+            \item follow the \bluehref{\template}{template} for the final report
+            % 
+        \end{itemize}
+    \end{enumerate}
+    %
+    \end{block}
+\end{frame}
+
+\section{Follow the guidelines}
+\subsection{Technical aspects}
+
+\begin{frame}[c,allowframebreaks]{Structure of the Lab}
+
+    An incremental path providing a taste of all the aforementioned issues: %(showing how main notions are built \& exploited C\&DS)
+    %
+    \medskip
+    %
+    \begin{enumerate}
+        \item we will first present the fundamentals of
+        %
+        \begin{itemize}
+            \item \alert{build automation} and \emph{dependency management} with Gradle
+            \item \alert{containerisation} and \alert{orchestration} with Docker
+        \end{itemize}
+
+        \medskip
+
+        \item we will then recall the basics of
+        %
+        \begin{itemize}
+            \item \alert{multi-threading} and \alert{asynchronous programming}, on the JVM
+            \item (byte-)stream-oriented \alert{communication via Sockets}, on the JVM
+        \end{itemize}
+
+        \medskip
+
+        \item we will then present the notion of \alert{(de-)serialization}
+        %
+        \begin{itemize}
+            \item and its usage for (un)marshalling data in remote communications
+            \item proposing practical exercises with the Jackson data-processing library
+        \end{itemize}
+
+        \framebreak
+
+        \item we will then present the notion of \alert{ReST API}
+        %
+        \begin{itemize}
+            \item showing how they can be \alert{formalised} via Swagger
+            \item discussing how \alert{web servers} can be realised on the JVM, via Javalin
+            \item discussing how \alert{web clients} can be realised on the JVM
+        \end{itemize}
+
+        \medskip
+
+        \item we will then describe state-of-the-art tools for
+        %
+        \begin{itemize}
+            \item building \alert{service-oriented applications}, e.g. via gRPC and Protobuff
+            \item \alert{temporally uncoupling} interacting entities, e.g. via RabbitMQ
+            \item \alert{replicating} data over a number of distributed machines, e.g. via etcd
+        \end{itemize}
+
+        \medskip
+
+        \item finally, we will exemplify notable \alert{agent-oriented infrastructures}
+        %
+        \begin{itemize}
+            \item such as \jade{}\ccite{jadebook-2007}, TuCSoN\ccite{tucson-jir98}, or TuSoW\ccite{tusow-icccn2019}
+        \end{itemize}
+
+    \end{enumerate}
+
+\end{frame}
+
+\subsection{Behavioural aspects}
+
+\begin{frame}[c,allowframebreaks]{Required Technologies and Skills}
+
+    \begin{block}{Legend}
+        \begin{multicols}{2}
+            \begin{itemize}
+                \item[$\checkmark$] we assume you know this topic
+                \item[$\rightarrow$] we teach this topic
+            \end{itemize}
+        \end{multicols}
+    \end{block}
+
+    \framebreak
+
+    \begin{alertblock}{Required}
+        \begin{itemize}
+            \item[$\checkmark$] basic understanding of computer networks
+            %
+            \begin{itemize}
+                \item ISO/OSI and TCP/IP stacks
+            \end{itemize}
+
+            \item[$\checkmark$] distributed version control systems (DVCS) \& \alert{Git}
+            %
+            \begin{itemize}
+                \item useful resources: \cite{pianiniDvcs, proGit}
+            \end{itemize}
+
+            \vfill
+
+            \item[$\rightarrow$] build automation tools and \alert{Gradle}
+            %
+            \begin{itemize}
+                \item useful resources: \cite{pianiniBuildAutomation, gradleUserGuide}
+            \end{itemize}
+
+            \vfill
+
+            \item[$\rightarrow$] containerisation, orchestration and \alert{Docker}
+
+            \vfill
+
+            \item OO programming in Java, and, in particular:
+            %
+            \begin{itemize}
+                \item[$\checkmark$] input/output API (useful resources: \cite{ProgrammizJavaIO})
+                \item[$\checkmark$] collections API (useful resources: \cite{Naftalin2006, Bloch2008, JavaCollectionsCheatsheets})
+                \item[$\checkmark$] streams and lambdas API (useful resources: \cite{Warburton2014, Bloch2008})
+                \item[$\checkmark$] multi-threading API (useful resources: \cite{Lea1999, Oaks2004, Garg2004, Goetz2006})
+                \item[$\rightarrow$] asynchronous programming API
+            \end{itemize}
+
+        \end{itemize}
+    \end{alertblock}
+
+    \begin{exampleblock}{Useful}
+        \begin{itemize}
+            \item[$\checkmark$] shell scripting and \alert{Bash}
+            \item[$\checkmark$] basic IDE configuration and usage (\alert{Eclipse} or \alert{IntelliJ Idea})
+        \end{itemize}
+    \end{exampleblock}
+
+    \begin{alertblock}{Setting up your own environment}
+        \begin{itemize}
+            \item[!] follow the instructions provided here: \cite{envSetup}
+        \end{itemize}
+    \end{alertblock}
+
+\end{frame}
+
+
+
+\begin{frame}[c]{About Projects}
+    \begin{itemize}
+        \item detailed rules here
+        \\
+        \uurl{\projectRules}
+
+        \vfill
+
+        \item workflow overview
+        %
+        \begin{enumerate}
+            \item \alert{choose} a project or \alert{propose} one
+            \item reserve your project on the \bluehref{https://virtuale.unibo.it/mod/forum/view.php?id=611834}{Projects forum}
+            \item submit an \alert{initial report}, describing your own requirements
+            \item receive a Git repository for tracking the development of your artefacts
+            \item develop your projects
+            \item write the \alert{final report}
+            \item submit your project \alert{code \& report} and ask for lab activity check
+            \item set up an appointment for discussing your project
+        \end{enumerate}
+
+        \vfill
+
+        \item group projects are allowed (max 4 persons)
+        %
+        \begin{itemize}
+            \item rule of thumb: $\sim90$ working hours per person per project
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[c, allowframebreaks]{Sorts of Projects}
+
+    \begin{block}{Classic DS Project}
+        Develop a distributed application
+        %
+        \begin{itemize}
+            \item[eg] web application, distributed video game, etc
+            \item Workflow:
+            %
+            \begin{enumerate}
+                \item Sketch the idea
+                \item Design
+                \item Write tests
+                \item Implement
+                \item Pack / deploy for reusability
+            \end{enumerate}
+            \item Previous projects in this category: \cite{Sd2021ProjectGuessR,Sd2021ProjectCAHu}
+            \item[!] Innovation is limited here, thus we expect
+            %
+            \begin{itemize}
+                \item design to be optimal, implementation to be complete
+                \item all aspects of software engineering
+                %
+                \begin{itemize}
+                    \item[ie] testing, packaging, continuos integration
+                \end{itemize}
+            \end{itemize}
+        \end{itemize}
+    \end{block}
+
+    \begin{block}{Advanced DS Project}
+        Provide an implementation for some distributed algorithm / protocol / architecture / model from the literature
+        %
+        \begin{itemize}
+            \item[eg] a consensus protocol, a distributed store, a data sharing protocol, etc.
+            \item Workflow:
+            %
+            \begin{enumerate}
+                \item Select \& study a paper form the literature
+                \item Design your implementation for the proposed contribution
+                \item Prototype an implementation
+                \item Pack / deploy for a demo
+            \end{enumerate}
+            \item Previous projects in this category: \cite{Sd2021ProjectZyzzyva, Sd2021HybridQuorum}
+            \item[!] Innovation is high here, thus we
+            %
+            \begin{itemize}
+                \item mostly care about the proposed design
+                \item implementation can be sub-optimal or embryonic
+                \item other aspects of software engineering have lower priority
+            \end{itemize}
+        \end{itemize}
+    \end{block}
+
+    \begin{block}{Research DS Project}
+        Help us extending some research product of ours with some feature
+        %
+        \begin{itemize}
+            \item[eg] TuCSoN\ccite{tusow-icccn2019}, TuSoW\ccite{tusow-icccn2019}, LPaaS\ccite{lpaas-bdcc2}, tuProlog\ccite{2pkt-softwarex}, etc.
+            \item Workflow:
+            %
+            \begin{enumerate}
+                \item Study the target research product
+                \item Collect requirements by interacting with us
+                \item Co-design the feature by interacting with us
+                \item Implement \& test the feature
+            \end{enumerate}
+            \item Previous projects in this category: \cite{Sd2021ProjectTusowCSharpInterface}
+            \item[!] Innovation is high here, but the activity is very constrained
+            %
+            \begin{itemize}
+                \item design and implementation must be expert-level
+                \item testing, and continuos integration are mandatory
+                \item you will be considered part of development team
+                \item you will be part of the author list of any subsequent paper
+            \end{itemize}
+        \end{itemize}
+    \end{block}
+
+    \begin{block}{Technology Know-How DS Project}
+        Study a technology of choice in depth, producing a technical report
+        %
+        \begin{itemize}
+            \item Workflow:
+            %
+            \begin{enumerate}
+                \item Select a technology, study its documentation
+                \item Understand its major abstraction
+                \item Experiment with its deployment, and ordinary usage
+                \item Stress it with extra-ordinary usage
+                \item Report about the technology and the experiment
+            \end{enumerate}
+            \item Previous projects in this category: \cite{Sd2021ProjectEtcd,Sd2021ProjectCEPH,Sd2021ProjectKubernetes}
+            \item[!] Focus here is on the technical report, other than the experiments
+            %
+            \begin{itemize}
+                \item software artefacts here consist of the code of the experiments
+                \item avoid copy-pasting the documentation, use your own words
+                \item experiment should cover more than the official ones
+            \end{itemize}
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+%===============================================================================
+\section*{}
+%===============================================================================
+\frame{\titlepage}
+
+%===============================================================================
+\section*{\bibname}
+%===============================================================================
+
+\setbeamertemplate{page number in head/foot}{}
+%\\\\\\\\\\\\\\\\\\\\\
+\begin{frame}[t,allowframebreaks,noframenumbering]\frametitle{\refname}
+    % \begin{frame}[c]\frametitle{\refname}
+    %    \footnotesize
+    %    \scriptsize
+        \tiny
+    \bibliographystyle{plain}
+    \bibliography{sd-lab-about}
+\end{frame}
+%\\\\\\\\\\\\\\\\\\\\\
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
