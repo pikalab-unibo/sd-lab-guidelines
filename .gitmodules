@@ -3,3 +3,6 @@
 	url = https://github.com/andreaomicini/beamer-AMSBolognaFC.git
 	branch = main
 
+[submodule ".sd-lab-common"]
+	path = .sd-lab-common
+	url = https://github.com/pikalab-unibo/sd-lab-common.git
