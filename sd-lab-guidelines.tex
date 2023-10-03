@@ -148,68 +148,99 @@
 \section{Follow the guidelines}
 \subsection{Technical aspects}
 
-\begin{frame}[c,allowframebreaks]{Structure of the Lab}
+\begin{frame}[c,allowframebreaks]{Design Design Design}
+    
+    {\centering
+    \includegraphics[width=\textwidth]{figures/boromir}}
+    
+    \framebreak
 
-    An incremental path providing a taste of all the aforementioned issues: %(showing how main notions are built \& exploited C\&DS)
+    The most common mistake of your previous colleagues was starting their project by writing code.
     %
-    \medskip
+    \alert{This is wrong!}
+   
+     \begin{block}{What you should think about before writing code}
+        \begin{itemize}
+            %
+            \item entities involved
+            %
+            \item functionalities
+            %
+            \item communication
+            %
+            \item \alert{faults}
+            %
+            \begin{itemize}
+                %
+                \item detection
+                %
+                \item countermeasures
+                %
+            \end{itemize}
+            %
+            \item technologies
+            %
+            \item etc...
+            %
+        \end{itemize}
+    \end{block}
+    
+    \framebreak
+    
     %
-    \begin{enumerate}
-        \item we will first present the fundamentals of
+    \vfill
+    %
+    \begin{block}{You must rely on diagrams in your design}
         %
         \begin{itemize}
-            \item \alert{build automation} and \emph{dependency management} with Gradle
-            \item \alert{containerisation} and \alert{orchestration} with Docker
+            %
+            \item sequence diagram
+            %
+            \item message communication diagram
+            %
+            \item state diagram
+            %
+            \item class diagram
+            %
+            \item use case diagram
+            %
         \end{itemize}
+        %
+    \end{block}
+    %
+    A free online tool for drawing UML diagrams is \bluehref{https://plantuml.com/}{plantUML}.
+    %
+    This is an example of a hello world \bluehref{https://www.plantuml.com/plantuml/uml/SoWkIImgAStDuNBCoKnELT2rKt3AJx9IS2mjoKZDAybCJYp9pCzJ24ejB4qjBk42oYde0jM05MDHLLoGdrUSoeLkM5u-K5sHGY9sGo6ARNHr2QY66kwGcfS2SZ00}{sequence diagram} that you can edit at will to make practice.
 
-        \medskip
-
-        \item we will then recall the basics of
+\end{frame}
+    
+\begin{frame}[c,allowframebreaks]{Use the tools properly}
+    
+    \centering
+    \animategraphics[loop,width=0.5\textwidth]{10}{figures/sequence_rocket_launcher/rocket_launcher-}{0}{73}
+    
+    \framebreak
+    
+    \begin{block}{The curse of UML diagrams}
+        %
+        For some unknown reason students struggle with UML diagrams.
         %
         \begin{itemize}
-            \item \alert{multi-threading} and \alert{asynchronous programming}, on the JVM
-            \item (byte-)stream-oriented \alert{communication via Sockets}, on the JVM
+            %
+            \item missing diagrams
+            %
+            \item diagram are present but they are not commented
+            \\
+            $\rightarrow$ \alert{sometimes not even referenced!}
+            %
+            \item wrong diagrams
+            %
         \end{itemize}
-
-        \medskip
-
-        \item we will then present the notion of \alert{(de-)serialization}
         %
-        \begin{itemize}
-            \item and its usage for (un)marshalling data in remote communications
-            \item proposing practical exercises with the Jackson data-processing library
-        \end{itemize}
-
-        \framebreak
-
-        \item we will then present the notion of \alert{ReST API}
-        %
-        \begin{itemize}
-            \item showing how they can be \alert{formalised} via Swagger
-            \item discussing how \alert{web servers} can be realised on the JVM, via Javalin
-            \item discussing how \alert{web clients} can be realised on the JVM
-        \end{itemize}
-
-        \medskip
-
-        \item we will then describe state-of-the-art tools for
-        %
-        \begin{itemize}
-            \item building \alert{service-oriented applications}, e.g. via gRPC and Protobuff
-            \item \alert{temporally uncoupling} interacting entities, e.g. via RabbitMQ
-            \item \alert{replicating} data over a number of distributed machines, e.g. via etcd
-        \end{itemize}
-
-        \medskip
-
-        \item finally, we will exemplify notable \alert{agent-oriented infrastructures}
-        %
-        \begin{itemize}
-            \item such as \jade{}\ccite{jadebook-2007}, TuCSoN\ccite{tucson-jir98}, or TuSoW\ccite{tusow-icccn2019}
-        \end{itemize}
-
-    \end{enumerate}
-
+    \end{block}
+    %
+    Here an example of a wrong class diagram. Can you tell me what is wrong?   
+    %
 \end{frame}
 
 \subsection{Behavioural aspects}
