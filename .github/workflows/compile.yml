@@ -23,7 +23,7 @@ jobs:
 
       - name: Get Version
         id: get-version
-        run: echo "::set-output name=version::$(cat *.tex | python .github/scripts/compute-version.py)"
+        run: echo "::set-output name=version::$(date +'%Y.%m.%d+%H-%M')"
 
       - name: Create Release
         id: create-release
