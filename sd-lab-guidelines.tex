@@ -210,7 +210,7 @@
     %
     A free online tool for drawing UML diagrams is \bluehref{https://plantuml.com/}{plantUML}.
     %
-    This is an example of a hello world \bluehref{https://www.plantuml.com/plantuml/uml/SoWkIImgAStDuNBCoKnELT2rKt3AJx9IS2mjoKZDAybCJYp9pCzJ24ejB4qjBk42oYde0jM05MDHLLoGdrUSoeLkM5u-K5sHGY9sGo6ARNHr2QY66kwGcfS2SZ00}{sequence diagram} that you can edit at will to make practice.
+    %This is an example of a hello world \bluehref{https://www.plantuml.com/plantuml/uml/SoWkIImgAStDuNBCoKnELT2rKt3AJx9IS2mjoKZDAybCJYp9pCzJ24ejB4qjBk42oYde0jM05MDHLLoGdrUSoeLkM5u-K5sHGY9sGo6ARNHr2QY66kwGcfS2SZ00}{sequence diagram} that you can edit at will to make practice.
 
 \end{frame}
     
@@ -267,8 +267,158 @@
             \end{itemize}
             %
         \end{itemize}
+        %
     \end{block}
+    %
 \end{frame}
+
+\begin{frame}[c,allowframebreaks]{Everything according to plan}
+    %
+    \begin{block}{We do not live in a simple world}
+        %
+        \begin{itemize}
+            %
+            \item distributed systems are \alert{distributed}
+            \\
+            $\rightarrow$ you will appreciate the consequences of that as the course goes on
+            %
+            \item things \alert{never} go as planned
+            %
+            \begin{itemize}
+                %
+                \item what if an entity of your system suddenly disconnects?
+                %
+                \item can I detect that?
+                %
+                \item should I do something if this happens?
+                %
+                \item what if there are Byzantines?
+                %
+            \end{itemize}
+            %
+        \end{itemize}
+        %
+    \end{block}
+     
+    \framebreak
+    
+    \begin{block}{Stem the tide}
+        %
+        \begin{itemize}
+            %
+            \item think about the previous questions when you are proposing the project
+            %
+            \item address them when designing the system
+            %
+            \item test the unwanted scenarios while implementing
+            %
+            \item \bluehref{https://people.mpi-sws.org/~rupak/Papers/SoftwareModelChecking.pdf}{software model checking}
+            %
+            \item \bluehref{https://en.wikipedia.org/wiki/Petri_net}{Petri nets}
+        \end{itemize}
+        %
+    \end{block}
+    
+    \framebreak
+    
+    \begin{block}{What happens if you just ignore all of this?}
+        %
+        \begin{itemize}
+            %
+            \item not (properly) working system
+            %
+            \item you loose time and energy jury rigging
+            %
+            \item we may ask you to resubmit your project
+            %
+            \item bad practice for a software engineer
+            %
+        \end{itemize}
+        %
+    \end{block}
+    %
+\end{frame}
+
+\begin{frame}[c,allowframebreaks]{Test and Continuos Integration}
+    
+    \begin{block}{Do not do something a machine can do (better)}
+        %
+        \begin{itemize}
+            %
+            \item \alert{testing is paramount!}
+            %
+            \item you can do it manually or automatically
+            %
+            \begin{itemize}
+                \item manually $\rightarrow$ you run the system and perform some actions, then you judge if the system behaved accordingly to what you expected.
+                %
+                Manual test could be used to test the graphical interface.
+                %
+                \item automatically $\rightarrow$ you write some code that uses functions, entities or the entire system and run it.
+                %
+                You can use unit tests for functions and classes, integration test for entities (in particular communication between them).
+                %
+            \end{itemize}
+            %
+            \item we encourage to test automatically and programmatically (i.e., using the continuous integration = CI) as much as possible
+            %
+        \end{itemize}
+        %
+    \end{block}
+    
+    \framebreak
+    
+    \begin{block}{What and how to test in the right way}
+        %
+        \begin{itemize}
+            %
+            \item unit test
+            %
+            \begin{itemize}
+                %
+                \item single functions or classes
+                %
+                \item by using values you expect the test to pass
+                %
+                \item by using values you expect the test to \alert{fail!}
+                %
+            \end{itemize}
+            %
+            \item integration test
+            %
+            \begin{itemize}
+                %
+                \item entities and communication between them
+                %
+                \item you could consider to use docker
+                %
+                \item disconnections to simulate faults
+                %
+                \item wait to simulate slow network
+                %
+            \end{itemize}
+            %
+            \item End to end test
+            %
+            \begin{itemize}
+                %
+                \item the whole system
+                %
+                \item you should use docker
+                %
+                \item write logs of what each component is doing and for events
+                %
+                \\
+                %
+                $\rightarrow$ then, you analyse the logs!
+            \end{itemize}
+            %
+        \end{itemize}
+        %
+    \end{block}
+    
+\end{frame}
+
 
 \subsection{Behavioural aspects}
 
@@ -348,111 +498,6 @@
         %        
     \end{block}
     %
-\end{frame}
-
-
-\begin{frame}[c, allowframebreaks]{Sorts of Projects}
-
-    \begin{block}{Classic DS Project}
-        Develop a distributed application
-        %
-        \begin{itemize}
-            \item[eg] web application, distributed video game, etc
-            \item Workflow:
-            %
-            \begin{enumerate}
-                \item Sketch the idea
-                \item Design
-                \item Write tests
-                \item Implement
-                \item Pack / deploy for reusability
-            \end{enumerate}
-            \item Previous projects in this category: \cite{Sd2021ProjectGuessR,Sd2021ProjectCAHu}
-            \item[!] Innovation is limited here, thus we expect
-            %
-            \begin{itemize}
-                \item design to be optimal, implementation to be complete
-                \item all aspects of software engineering
-                %
-                \begin{itemize}
-                    \item[ie] testing, packaging, continuos integration
-                \end{itemize}
-            \end{itemize}
-        \end{itemize}
-    \end{block}
-
-    \begin{block}{Advanced DS Project}
-        Provide an implementation for some distributed algorithm / protocol / architecture / model from the literature
-        %
-        \begin{itemize}
-            \item[eg] a consensus protocol, a distributed store, a data sharing protocol, etc.
-            \item Workflow:
-            %
-            \begin{enumerate}
-                \item Select \& study a paper form the literature
-                \item Design your implementation for the proposed contribution
-                \item Prototype an implementation
-                \item Pack / deploy for a demo
-            \end{enumerate}
-            \item Previous projects in this category: \cite{Sd2021ProjectZyzzyva, Sd2021HybridQuorum}
-            \item[!] Innovation is high here, thus we
-            %
-            \begin{itemize}
-                \item mostly care about the proposed design
-                \item implementation can be sub-optimal or embryonic
-                \item other aspects of software engineering have lower priority
-            \end{itemize}
-        \end{itemize}
-    \end{block}
-
-    \begin{block}{Research DS Project}
-        Help us extending some research product of ours with some feature
-        %
-        \begin{itemize}
-            \item[eg] TuCSoN\ccite{tusow-icccn2019}, TuSoW\ccite{tusow-icccn2019}, LPaaS\ccite{lpaas-bdcc2}, tuProlog\ccite{2pkt-softwarex}, etc.
-            \item Workflow:
-            %
-            \begin{enumerate}
-                \item Study the target research product
-                \item Collect requirements by interacting with us
-                \item Co-design the feature by interacting with us
-                \item Implement \& test the feature
-            \end{enumerate}
-            \item Previous projects in this category: \cite{Sd2021ProjectTusowCSharpInterface}
-            \item[!] Innovation is high here, but the activity is very constrained
-            %
-            \begin{itemize}
-                \item design and implementation must be expert-level
-                \item testing, and continuos integration are mandatory
-                \item you will be considered part of development team
-                \item you will be part of the author list of any subsequent paper
-            \end{itemize}
-        \end{itemize}
-    \end{block}
-
-    \begin{block}{Technology Know-How DS Project}
-        Study a technology of choice in depth, producing a technical report
-        %
-        \begin{itemize}
-            \item Workflow:
-            %
-            \begin{enumerate}
-                \item Select a technology, study its documentation
-                \item Understand its major abstraction
-                \item Experiment with its deployment, and ordinary usage
-                \item Stress it with extra-ordinary usage
-                \item Report about the technology and the experiment
-            \end{enumerate}
-            \item Previous projects in this category: \cite{Sd2021ProjectEtcd,Sd2021ProjectCEPH,Sd2021ProjectKubernetes}
-            \item[!] Focus here is on the technical report, other than the experiments
-            %
-            \begin{itemize}
-                \item software artefacts here consist of the code of the experiments
-                \item avoid copy-pasting the documentation, use your own words
-                \item experiment should cover more than the official ones
-            \end{itemize}
-        \end{itemize}
-    \end{block}
 \end{frame}
 
 %===============================================================================
